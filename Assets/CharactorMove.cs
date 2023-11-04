@@ -14,6 +14,8 @@ public class CharactorMove : MonoBehaviour
     float direction;
     Vector3 pos;
 
+    bool isMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,30 @@ public class CharactorMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += pos * Time.deltaTime;
+        if (isMove)
+        {
+            transform.position += pos * Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 敵にぶつかったら移動を止める
+        if (collision.gameObject.tag == "Enemy" && type == TYPE.PLAYER
+            || collision.gameObject.tag == "Player" && type == TYPE.ENEMY)
+        {
+            isMove = false;
+        }
+        // 攻撃をし始める
+
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && type == TYPE.PLAYER
+            || collision.gameObject.tag == "Player" && type == TYPE.ENEMY)
+        {
+            isMove = true;
+        }
     }
 }
