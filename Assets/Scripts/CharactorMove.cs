@@ -16,6 +16,8 @@ public class CharactorMove : MonoBehaviour
 
     bool isMove = true;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,7 @@ public class CharactorMove : MonoBehaviour
                 break;
         }
         pos = new Vector3(direction, 0, 0);
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,7 +55,12 @@ public class CharactorMove : MonoBehaviour
             isMove = false;
         }
         // 攻撃をし始める
-
+        // 攻撃アニメーションの再生
+        anim.SetBool("Attack", true);
+        // 相手のHPを削る
+        HitPoint hitPoint = collision.gameObject.GetComponent<HitPoint>();
+        StartCoroutine(AttackAction(hitPoint));
+        // 倒したらまた前に進む
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -61,6 +69,16 @@ public class CharactorMove : MonoBehaviour
             || collision.gameObject.tag == "Player" && type == TYPE.ENEMY)
         {
             isMove = true;
+            anim.SetBool("Attack", false);
+        }
+    }
+
+    IEnumerator AttackAction(HitPoint hitPoint)
+    {
+        while(hitPoint.hp > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            hitPoint.Damage(1);
         }
     }
 }

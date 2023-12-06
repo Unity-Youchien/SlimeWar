@@ -2196,6 +2196,7 @@ GameObject:
   - component: {fileID: 2098037402}
   - component: {fileID: 2098037401}
   - component: {fileID: 2098037403}
+  - component: {fileID: 2098037404}
   m_Layer: 0
   m_Name: Slime_Move0
   m_TagString: Player
@@ -2376,6 +2377,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!114 &2098037404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098037397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b11659433ad4f0b998bc467e42218c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 5
 --- !u!1 &2114019048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2511,6 +2525,7 @@ GameObject:
   - component: {fileID: 2119218494}
   - component: {fileID: 2119218493}
   - component: {fileID: 2119218498}
+  - component: {fileID: 2119218499}
   m_Layer: 0
   m_Name: Yuusha0
   m_TagString: Enemy
@@ -2691,6 +2706,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+--- !u!114 &2119218499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119218492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b11659433ad4f0b998bc467e42218c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
