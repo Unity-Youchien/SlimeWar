@@ -5,10 +5,20 @@ using UnityEngine.UI;
 
 public class Wallet : MonoBehaviour
 {
+    public static Wallet instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     [SerializeField] Text coinText;
 
     int maxCoin = 500;
-    float nowCoin = 0;
+    public float nowCoin = 0;
 
     int coinSpeed = 6;
 
