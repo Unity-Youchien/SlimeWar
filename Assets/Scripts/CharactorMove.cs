@@ -53,14 +53,14 @@ public class CharactorMove : MonoBehaviour
             || collision.gameObject.tag == "Player" && type == TYPE.ENEMY)
         {
             isMove = false;
+            // 攻撃をし始める
+            // 攻撃アニメーションの再生
+            anim.SetBool("Attack", true);
+            // 相手のHPを削る
+            HitPoint hitPoint = collision.gameObject.GetComponent<HitPoint>();
+            StartCoroutine(AttackAction(hitPoint));
+            // 倒したらまた前に進む
         }
-        // 攻撃をし始める
-        // 攻撃アニメーションの再生
-        anim.SetBool("Attack", true);
-        // 相手のHPを削る
-        HitPoint hitPoint = collision.gameObject.GetComponent<HitPoint>();
-        StartCoroutine(AttackAction(hitPoint));
-        // 倒したらまた前に進む
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -80,5 +80,10 @@ public class CharactorMove : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             hitPoint.Damage(1);
         }
+    }
+
+    public void DestroyEvent()
+    {
+        Destroy(gameObject);
     }
 }
